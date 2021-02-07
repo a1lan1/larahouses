@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Providers;
+
+use App\Contracts\HouseContract;
+use App\Repositories\HouseRepository;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Dusk\DuskServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        if ($this->app->runningUnitTests()) {
+            Schema::defaultStringLength(191);
+        }
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        if ($this->app->environment('local', 'testing') && class_exists(DuskServiceProvider::class)) {
+            $this->app->register(DuskServiceProvider::class);
+        }
+
+        $this->app->bind(
+            HouseContract::class,
+            HouseRepository::class
+        );
+    }
+}

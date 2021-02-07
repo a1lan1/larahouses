@@ -1,0 +1,26 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Repositories\BaseRepository;
+use App\Contracts\{{ class }}Contract;
+
+class {{ class }} implements {{ class }}Contract
+{
+
+    private $dummyRepository;
+
+
+    public function __construct(BaseRepository $dummyRepository)
+    {
+        $this->dummyRepository = $dummyRepository;
+    }
+
+
+    public function index()
+    {
+        $data = [];
+
+        return $data;
+    }
+}

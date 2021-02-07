@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+
+/**
+ * Interface {{ class }}.
+ */
+interface {{ class }}
+{
+    public function createSomething(array $data): Model;
+    public function doSomething(array $data): Collection;
+}
